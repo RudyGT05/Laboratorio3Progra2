@@ -1,4 +1,4 @@
-package umg.progra2.DataBase.DbConnection;
+package umg.progra2.DataBase.DatabasConnection;
 
 import java.sql.*;
 

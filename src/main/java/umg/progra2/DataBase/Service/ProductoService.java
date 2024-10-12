@@ -1,7 +1,7 @@
-package umg.programacion2.DataBase.Service;
+package umg.progra2.DataBase.Service;
 
-import umg.programacion2.DataBase.Dao.ProductoDao;
-import umg.programacion2.DataBase.Model.ProductoModel;
+import umg.progra2.DataBase.Dao.ProductoDao;
+import umg.progra2.DataBase.Model.ProductoModel;
 
 import java.util.List;
 
@@ -29,9 +29,6 @@ public class ProductoService {
         productoDao.eliminarProducto(idProducto);
     }
 
-    public List<ProductoModel> obtenerTodosLosProductos() throws Exception {
-        return productoDao.obtenerTodosLosProductos();
-    }
 
     public List<ProductoModel> obtenerGenericos(String condicion) throws Exception {
         return productoDao.obtenerGenericos(condicion);
@@ -40,4 +37,8 @@ public class ProductoService {
     public List<ProductoModel> obtenerTodosLosProductosID() throws Exception {
         return productoDao.obtenerTodosLosProductosID();
     }
+    public List<ProductoModel> obtenerAgruapdos(String condicion) throws Exception {
+        return productoDao.obtenerAgrupados(condicion);
+    }
+
 }

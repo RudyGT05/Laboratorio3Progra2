@@ -1,21 +1,11 @@
-package umg.programacion2.DataBase.Model;
+package umg.progra2.DataBase.Model;
 
 public class ProductoModel {
     private int idProducto;
     private String descripcion;
     private String origen;
-    private double precio;      // Cambiado a double para el precio
-    private int existencia;     // Nueva columna
-
-    public ProductoModel(int idProducto, String descripcion, String origen, double precio, int existencia) {
-        this.idProducto = idProducto;
-        this.descripcion = descripcion;
-        this.origen = origen;
-        this.precio = precio;    // Cambiado a double
-        this.existencia = existencia;
-    }
-
-    public ProductoModel() {}
+    private double precio;
+    private int existencia;
 
     // Getters y Setters
     public int getIdProducto() {
@@ -42,11 +32,11 @@ public class ProductoModel {
         this.origen = origen;
     }
 
-    public double getPrecio() {  // Cambiado a double
+    public double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(double precio) {  // Cambiado a double
+    public void setPrecio(double precio) {
         this.precio = precio;
     }
 
@@ -58,3 +48,4 @@ public class ProductoModel {
         this.existencia = existencia;
     }
 }
+

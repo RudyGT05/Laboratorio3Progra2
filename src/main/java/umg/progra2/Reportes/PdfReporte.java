@@ -11,10 +11,10 @@ import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.List;
 
-public class PdfReport {
-    private static final Font TITLE_FONT = new Font(Font.FontFamily.COURIER, 14, Font.BOLD);
+public class PdfReporte {
+    private static final Font TITLE_FONT = new Font(Font.FontFamily.HELVETICA, 14, Font.BOLD);
     private static final Font HEADER_FONT = new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD);
-    private static final Font NORMAL_FONT = new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.NORMAL);
+    private static final Font NORMAL_FONT = new Font(Font.FontFamily.HELVETICA, 12, Font.NORMAL);
 
     public void generateProductReport(List<ProductoModel> productos, String outputPath, boolean agrupar) throws DocumentException, IOException {
         Document document = new Document(PageSize.LETTER, 50, 50, 50, 50);
@@ -44,6 +44,10 @@ public class PdfReport {
     private void addProductTable(Document document, List<ProductoModel> productos) throws DocumentException {
         PdfPTable table = new PdfPTable(6); // Cambiar a 6 columnas: ID, Descripción, Origen, Precio, Existencia, Total
         table.setWidthPercentage(100);
+        table.setSpacingBefore(10f);
+        table.setSpacingAfter(10f);
+        table.setHeaderRows(1); // Establecer la fila del encabezado
+
         addTableHeader(table);
         addRows(table, productos); // Usar el método addRows
         document.add(table);
@@ -53,6 +57,10 @@ public class PdfReport {
     private void addProductTableGrouped(Document document, List<ProductoModel> productos) throws DocumentException {
         PdfPTable table = new PdfPTable(6); // Cambiar a 6 columnas: ID, Descripción, Origen, Precio, Existencia, Total
         table.setWidthPercentage(100);
+        table.setSpacingBefore(10f);
+        table.setSpacingAfter(10f);
+        table.setHeaderRows(1); // Establecer la fila del encabezado
+
         addTableHeader(table);
         addRowsGroup(table, productos); // Usar el método addRowsGroup
         document.add(table);
@@ -62,7 +70,7 @@ public class PdfReport {
         String[] columnTitles = {"ID", "Descripción", "Origen", "Precio", "Existencia", "Total"}; // Cambiar a 6 columnas
         for (String columnTitle : columnTitles) {
             PdfPCell header = new PdfPCell();
-            header.setBackgroundColor(BaseColor.CYAN);
+            header.setBackgroundColor(new BaseColor(0, 128, 0)); // Color verde para el encabezado
             header.setBorderWidth(1);
             header.setPhrase(new Phrase(columnTitle, HEADER_FONT));
             table.addCell(header);
@@ -92,7 +100,7 @@ public class PdfReport {
         DecimalFormat df = new DecimalFormat("#.00"); // Para formatear los precios con dos decimales
 
         // Definir el color de fondo y la fuente en negrita
-        BaseColor greenColor = BaseColor.GREEN;
+        BaseColor greenColor = new BaseColor(0, 128, 0); // Color verde
         Font boldFont = new Font(NORMAL_FONT.getFamily(), NORMAL_FONT.getSize(), Font.BOLD);
 
         for (ProductoModel producto : productos) {
